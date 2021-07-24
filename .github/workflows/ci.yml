@@ -37,13 +37,20 @@ jobs: # 工作流
 #          local-dir: ./docs/
 #          server-dir: opt/
 
+#      - name: 开始ftp同步
+#          run: |
+#            git config git-ftp.url ${{ secrets.FTP_IP }}
+#            git config git-ftp.user ${{ secrets.FTP_USER }}
+#            git config git-ftp.password ${{ secrets.FTP_PASSWORD }}
+#            git ftp push --auto-init -vv --disable-epsv --changed-only -f
+
       - name: FTP Deploy
           uses: SamKirkland/FTP-Deploy-Action@4.0.0
           with:
             server: 118.25.22.194
             username: ftpxiaosu
             password: ${{ secrets.FTP_PASSWORD }}
-            local-dir: ./docs/
+            local-dir: /docs/
             server-dir: opt/
 
 # 提取打包发布，可以在一个仓库里
