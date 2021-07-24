@@ -38,7 +38,7 @@ jobs: # 工作流
 #          server-dir: opt/
 
       - name: FTP Deploy
-          uses: SamKirkland/FTP-Deploy-Action@beta-v4
+          uses: SamKirkland/FTP-Deploy-Action@4.0.0
           with:
             server: 118.25.22.194
             username: ftpxiaosu
