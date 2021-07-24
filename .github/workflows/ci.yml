@@ -35,6 +35,7 @@ jobs: # 工作流
           server: 118.25.22.194
           username: ftpxiaosu
           password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /
 
       #      - name: run deploy.sh # 步骤3 （同时部署到github和coding）
       #        env: # 设置环境变量
