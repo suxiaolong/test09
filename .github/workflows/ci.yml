@@ -23,36 +23,38 @@ jobs: # 工作流
         uses: actions/setup-node@v1 # 作用：安装nodejs
         with:
           node-version: ${{ matrix.node-version }} # 版本
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          server: 118.25.22.194
+          username: ftpxiaosu
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./docs/
+          server-dir: opt/
+
       #      - name: run deploy.sh # 步骤3 （同时部署到github和coding）
       #        env: # 设置环境变量
       #          GITHUB_TOKEN: ${{ secrets.my_su_token }} # toKen私密变量
       #        run: npm install && npm run deploy
 
-#      - name: Sync files # 步骤3 （只提交到github可以使用这个步骤）
-#        uses: SamKirkland/FTP-Deploy-Action@4.0.1-patch # 作用：将项目构建和部署到github。 https://github.com/JamesIves/github-pages-deploy-action
-#        with:
-#          server: 118.25.22.194
-#          username: ftpxiaosu
-#          password: ${{ secrets.FTP_PASSWORD }}
-#          local-dir: ./docs/
-#          server-dir: opt/
+      #      - name: Sync files # 步骤3 （只提交到github可以使用这个步骤）
+      #        uses: SamKirkland/FTP-Deploy-Action@4.0.1-patch # 作用：将项目构建和部署到github。 https://github.com/JamesIves/github-pages-deploy-action
+      #        with:
+      #          server: 118.25.22.194
+      #          username: ftpxiaosu
+      #          password: ${{ secrets.FTP_PASSWORD }}
+      #          local-dir: ./docs/
+      #          server-dir: opt/
 
-#      - name: 开始ftp同步
-#          run: |
-#            git config git-ftp.url ${{ secrets.FTP_IP }}
-#            git config git-ftp.user ${{ secrets.FTP_USER }}
-#            git config git-ftp.password ${{ secrets.FTP_PASSWORD }}
-#            git ftp push --auto-init -vv --disable-epsv --changed-only -f
+      #      - name: 开始ftp同步
+      #          run: |
+      #            git config git-ftp.url ${{ secrets.FTP_IP }}
+      #            git config git-ftp.user ${{ secrets.FTP_USER }}
+      #            git config git-ftp.password ${{ secrets.FTP_PASSWORD }}
+      #            git ftp push --auto-init -vv --disable-epsv --changed-only -f
 
-      - name: FTP Deploy
-          uses: SamKirkland/FTP-Deploy-Action@4.0.0
-          with:
-            server: 118.25.22.194
-            username: ftpxiaosu
-            password: ${{ secrets.FTP_PASSWORD }}
-            local-dir: /docs/
-            server-dir: opt/
 
-# 提取打包发布，可以在一个仓库里
+
+
 
 
