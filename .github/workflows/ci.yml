@@ -38,14 +38,13 @@ jobs: # 工作流
 #          server-dir: opt/
 
       - name: FTP Deploy
-          uses: SamKirkland/FTP-Deploy-Action@2.0.0
+          uses: SamKirkland/FTP-Deploy-Action@beta-v4
           env:
             FTP_SERVER: 118.25.22.194
             FTP_USERNAME: ftpxiaosu
             FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
             LOCAL_DIR: docs
             REMOTE_DIR: /opt
-
 
 # 提取打包发布，可以在一个仓库里
 
